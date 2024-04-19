@@ -3,6 +3,7 @@ import prisma from '../lib/db';
 import { redirect } from 'next/navigation';
 import ListingCard from '../components/ListingCard';
 import { NoItems } from '../components/NoItems';
+import { unstable_noStore as noStore } from 'next/cache';
 
 async function getData(userId: string) {
   const data = await prisma.favorite.findMany({
@@ -26,6 +27,7 @@ async function getData(userId: string) {
 }
 
 const FavouriteRoute = async () => {
+  noStore();
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   if (!user) {
