@@ -30,5 +30,5 @@ export async function GET() {
     });
   }
 
-  return NextResponse.redirect(process.env.KINDE_SITE_URL as string);
+  return NextResponse.redirect('https://airbnb-clone-vert-alpha.vercel.app');
 }
